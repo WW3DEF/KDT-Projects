@@ -14,9 +14,30 @@ public class TEST12 {
         System.out.print("수학 점수 입력 : ");
         int S = scanner.nextInt();
 
-        int sum = G + Y + S;
-        System.out.println("총 합계 : " + sum);
-        int avg = sum / 3 ;
-        System.out.println("평균 : " + avg);
+        int SU = SUM(G,Y,S);
+        System.out.println("총 합계 : " + SU);
+        double AG = AVG(SU);
+        System.out.println("평균 : " + AG);
+    }
+    public static int SUM(int g, int y, int s) {
+        int sum = g + y + s;
+        return sum;
+    }
+    public static double AVG(double sum) {
+        double avg = sum / 3;
+        return avg;
     }
 }
+
+// 1. 변수 - 하나의 값을 저장하기위해 메모리 특정공간에 붙여진 이름
+// 2. 변수 선언 - ( 타입(자료형) ) ( 변수명 ) = 임의의 값 ex ) 정수(int)이면 10, 실수(float, double)이면 10.0, 문자열(String)이면 "KDT"
+// 변수의 생명주기 - 변수가 선언된 블록내에서만 접근 가능
+// 3. 변수의 초기화 - 변수 선언후 최초 값을 저장(대입,할당)하는 행위 ex ) int y; ( 변수 선언 ), y = 10; ( 변수 초기화 )
+// 4. 재할당 - 변수의 초기화 이후 값을 수정하는 행위 ex ) y = 10; ( 초기화 ) y = 20; ( 재할당 )
+// 5. 메소드유형 - 4가지
+// 6. 연산자 - 산술 ( +(더하기) , -(빼기) , *(곱하기) , /(나누기), %(나머지) ) > 비교( >(크다) , <(작다), =(같다), >=(이상), <=(이하), !=(같지않음)) > 논리( &&((그리고)AND) , ||((또는)OR), !((부정)NOT), ^((배타적)XOR) > 대입(6)( = , +=,  -=, *=, /= )
+// 문자열 연결 연산자(+) - 피연산자중 하나라도 문자열이면 문자열 연산자로 동작
+// 7. 분기문(4) - 단순if, if~else, if~else-if, else, switch(break) 중첩분기문 가능
+// 8. 반복문 - while문, do~while문, for문, 향상된 for문
+//  break - ( 가장 가까운 반복문을 빠져나온다), continue(while,do~while문에서는 조건식으로 제어가 이동, for문에서는 증감식으로 제어가 이동)
+// 9. Scanner(System.in) - 사용자로부터 화면입력을 받을때 사용
