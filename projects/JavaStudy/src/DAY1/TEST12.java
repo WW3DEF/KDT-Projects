@@ -52,10 +52,10 @@ public class TEST12 {
 // 형변환연산자(casting): (자료형)
 // 3항연산자 : (조건식) ? 실행문1 : 실행문2
 
-// 7. 분기문(4) - 단순if, if~else, if~else-if, else, switch(break) 중첩분기문 가능
+// 7. 조건문(4) - 단순if, if~else, if~else-if, else, switch(break) 중첩분기문 가능
 
 // 8. 반복문 - while문, do~while문, for문, 향상된 for문
-//  break - ( 가장 가까운 반복문을 빠져나온다), continue(while,do~while문에서는 조건식으로 제어가 이동, for문에서는 증감식으로 제어가 이동)
+//  분기문 - break - ( 가장 가까운 반복문을 빠져나온다), continue(while,do~while문에서는 조건식으로 제어가 이동, for문에서는 증감식으로 제어가 이동) return : 메소드내에서 사용
 
 // 9. Scanner(System.in) - 사용자로부터 화면입력을 받을때 사용
 
