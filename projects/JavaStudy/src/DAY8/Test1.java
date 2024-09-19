@@ -2,7 +2,7 @@
 package DAY8;
 /*
   메소드 오버로딩(다중정의) : 메소드명은 동일하고 매개변수를 다르게 정의할수 있는 문법
- */
+*/
 public class Test1 {
   public static void main(String[] args) {
 

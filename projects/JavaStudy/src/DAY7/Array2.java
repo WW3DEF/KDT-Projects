@@ -26,7 +26,6 @@ public class Array2 {
     System.out.println(arr[1].length);
 
     Line.printLine('=', 10);
-
     arr[1][1] = 10;
 
     for (int i = 0; i < arr.length; i++) {
