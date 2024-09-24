@@ -30,3 +30,6 @@
 
 - # DAY 11
   - **추상화(Abstract), 상속(extends), super, super(), static**
+
+- # DAY 12
+  - **추상화(Abstract), 상속(extends), super, super(), static**
