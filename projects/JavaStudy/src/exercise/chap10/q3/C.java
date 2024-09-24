@@ -1,5 +1,5 @@
 package exercise.chap10.q3;
 
-public class C extends B {
+public class C extends A {
 
 }
