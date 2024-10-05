@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            outline: 1px solid red;
+        }
+        .cont{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .cont.cont1{
+            justify-content: flex-start;
+            align-items: center;
+            height: 200px;
+        }
+        .cont.cont2{
+            justify-content: flex-end;
+        }
+        .cont.cont3{
+            justify-content: center;
+        }
+        .cont.cont4{
+            justify-content: space-between;
+        }
+        .cont.cont5{
+            justify-content: space-around;
+        }
+        .cont.cont6{
+            justify-content: space-evenly;
+        }
+        /* .cont.cont1 .item{
+            flex-grow: 1;
+        } */
+        .cont.cont1 .item.item1{
+            /* flex-grow: 1;
+            flex-shrink: 2;
+            flex-basis: 100px; */
+            flex: 1 2 100px;
+        }
+        .cont.cont1 .item.item2{
+            /* flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px; */
+            flex: 1 1 100px;
+            align-self: flex-start;
+        }
+        .cont.cont1 .item.item3{
+            order: 3;
+        }
+        .cont.cont1 .item.item4{
+            order: 2;
+        }
+        .cont.cont1 .item.item5{
+            order: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont cont1">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div>
+    <!-- <div class="cont cont2">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div>
+    <div class="cont cont3">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div>
+    <div class="cont cont4">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div>
+    <div class="cont cont5">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div>
+    <div class="cont cont6">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+    </div> -->
+</body>
+</html>

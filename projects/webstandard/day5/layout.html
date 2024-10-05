@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+
+        }
+        .uppermost,
+        .header,
+        .nav,
+        .main,
+        .footer_menu,
+        .footer{
+            display: flex;
+            justify-content: center;
+        }
+        .uppermost{
+            background-color: #470e50;
+        }
+        .header {
+            background-color: #5d1d67;
+        }
+        .nav {
+            background-color: #ab3dbc;
+        }
+        .inner{
+            display: flex;
+            width: 800px;
+            justify-content: center;
+            align-items: center;
+        }
+        .main {
+            background-color: rgb(52,191,191);
+        }
+        .footer_menu {
+            background-color: #e5bbeb;
+        }
+        .uppermost_inner,
+        .footer_menu_inner {
+            height: 40px;
+        }
+        .header_inner,
+        .footer{
+            height: 100px;
+            background-color: #dfc9df;
+        }
+        .main_inner .content {
+            display: flex;
+            flex-grow: 6;
+            background-color: #212f34;
+            justify-content: center;
+            align-items: center;
+        }
+        .main_inner .sidebanner {
+            display: flex;
+            flex-grow: 2;
+            background-color: #0f6280;
+            justify-content: center;
+            align-items: center;
+        }
+        .main_inner .sidemenu {
+            display: flex;
+            flex-grow: 2;
+            background-color: #539fbb;
+            justify-content: center;
+            align-items: center;
+        }
+        .uppermost_inner {
+            background-color: rgb(121,19,143);
+        }
+        .header_inner {
+            background-color: #b84ac8;
+        }
+        .main_inner {
+            display: flex;
+            height: 300px;
+            align-items: stretch;
+            border: 5px solid #000;
+            box-sizing: border-box;
+        }
+        .nav_inner {
+            background-color: #e9b3f1;
+        }
+        .footer_menu_inner {
+            background-color: #edd6f3;
+        }
+        .footer_inner {
+            background-color: #efe3f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="uppermost">
+            <div class="inner uppermost_inner"><span>uppermost</span></div>
+        </div>
+        <div class="header">
+            <div class="inner header_inner"><span>header</span></div>
+        </div>
+        <div class="nav">
+            <div class="inner nav_inner"><span>nav</span></div>
+        </div>
+        <div class="main">
+            <div class="inner main_inner">
+                <div class="content"><span>content</span></div>
+                <div class="sidebanner"><span>sidebanner</span></div>
+                <div class="sidemenu"><span>sidemenu</span></div>
+            </div>
+        </div>
+        <div class="footer_menu">
+            <div class="inner footer_menu_inner"><span>footermenu</span></div>
+        </div>
+        <div class="footer">
+            <div class="inner footer_inner"><span>footer</span></div>
+        </div>
+    </div>
+</body>
+</html>

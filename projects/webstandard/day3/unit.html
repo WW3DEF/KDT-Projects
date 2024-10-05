@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            font-size: 20px;
+        }
+        body{
+            font-size: 30px;
+        }
+        .child1 {
+            font-size: 2em; /* 60px 부모요소에 따라 상대적으로 조정*/
+        }
+        .child2 {
+            font-size: 2rem; /* 40px root(html 문서)에 맞춰서 조정*/ 
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child1">child</div>
+        <div class="child2">child</div>
+    </div>
+</body>
+</html>
