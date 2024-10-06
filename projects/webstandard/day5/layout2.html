@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout2</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        .UppermostMenu {
+            display: flex;
+            background-color: #e51212;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+        .Header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            background-color: #a5fafa;
+        }
+        .Nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            background-color: #00fbff;
+        }
+        .Header_inner, .Nav_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65%;
+            background-color: rgba(255, 230, 0, 0.16);
+            height: 100%;
+        }
+        .Footer {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            height: 500px;
+            background-color: #ffc8ea;
+        }
+        .Footer_inner {
+            width: 65%;
+            justify-content: center;
+            display: flex;
+            height: 100%;
+            background-color: white;
+        }
+        .Menu {
+            display: flex;
+            align-items: stretch;
+            background-color: #feb200;
+            justify-content: flex-start;
+            width: 250px;
+        }
+        .Menu > ul {
+            margin-top: 30px;
+        }
+        .Section {
+            display: flex;
+            background-color: #96d2ff;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .Section_inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            width: 70%;
+            height: 30%;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-color: #ffffff5a;
+            margin-top: 20px;
+        }
+        .Section_Title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .Section_Content {
+            text-align: center;
+        }
+        .Section_Footer_inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3f3f3f;
+            height: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="UppermostMenu">
+        <span>Uppermost Menu</span>
+    </div>
+    <div class="Header">
+        <div class="Header_inner">
+            <span>Header</span>
+        </div>
+    </div>
+    <div class="Nav">
+        <div class="Nav_inner">
+            <span>Nav</span>
+        </div>
+    </div>
+    <div class="Footer">
+        <div class="Footer_inner">
+            <div class="Menu">
+                <ul>
+                    <li>Menu1</li>
+                    <li>Menu2</li>
+                    <li>Menu3</li>
+                    <li>Menu4</li>
+                    <li>Menu5</li>
+                </ul>
+            </div>
+            <div class="Section">
+                <div class="Section_inner">
+                    <span class="Section_Title">SECTION TITLE</span>
+                    <span class="Section_Content">it is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</span>
+                </div>
+                <div class="Section_Footer_inner">
+                    <span>Footer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
