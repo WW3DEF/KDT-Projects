@@ -1,0 +1,52 @@
+@charset 'utf-8';
+
+* {
+    /* outline: 1px solid red; */
+}
+input {
+    border: none;
+    outline: none;
+}
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+.wrap .wrap-form {
+    margin:20px 0px;
+    background-color: #ebbc44;
+}
+.wrap .wrap-form .form_title{
+    text-align: center;
+    letter-spacing: 0.2em;
+}
+
+.wrap .wrap-form .form_body .btns .btn-submit{
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: palevioletred;
+    border-radius: 5px;
+}
+.wrap .wrap-form .form_body .btns .btn-submit:hover{
+    color: #000;
+    background-color: rgb(69, 86, 54);
+}
+.wrap .wrap-form .form_body .row:nth-last-of-type(1) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form_body .row {
+    display: flex;
+    margin-bottom: 3px;
+    padding: 3px;
+}
+
+.form_body .row .col.col1 {
+    min-width: 100px;
+}
+.form_body .row .col.col2 {
+    flex: 1; /* 여유공간을 모두 차지  flex-grow:1, flex-shrink: 1, flex-basis: 0 */
+}

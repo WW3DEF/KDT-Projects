@@ -1,0 +1,62 @@
+@charset 'utf-8';
+
+*{
+    margin: 0;
+}
+.com {
+    color: red;
+}
+.nav_inner{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.228);
+    height: 50px;
+    align-items: center;
+}
+.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 20px;
+}
+
+.Menu>ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+button {
+    color: white;
+    border-style: none;
+    border-radius: 30px;
+    background-color: #180081;
+    height: 30px;
+}
+.button_inner {
+    margin:auto 20px;
+}
+button:hover {
+    background-color: #8ac0e0;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.afacad-flux-spaner {
+  font-family: "Afacad Flux", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.afacad-flux-spaner.Photobox {
+    margin : auto 10px;
+}

@@ -1,0 +1,28 @@
+@charset 'utf-8';
+
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    /* flex 기본 default 값 */
+    /* flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch; */
+    flex-direction: column;
+    height: 70px;
+    background-color: yellow;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+/* .item { */
+    /* flex-grow: 0;
+    width: 100px; */
+    
+    /* flex-direction이 row일땐 폭이 column일땐 높이 */
+    /* flex-basis: 50px; */
+/* } */
+
