@@ -1,0 +1,76 @@
+@charset 'utf-8';
+
+* {
+    outline: 1px solid red;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 0px;
+    text-align: center;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+/* 미디어 쿼리 : 화면 너비가 600px 이하일때 */
+@media (max-width: 600px) {
+    .wrap {
+        display: flex;
+        justify-content: center;
+    }
+    body {
+        background-color: #00f;
+    }
+    header {
+        font-size: 10px;
+    }
+    footer {
+        font-size: 14px;
+    }
+}
+
+
+/* 미디어 쿼리 : 화면 너비가 900px 이하일때 */
+@media (max-width: 900px) {
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+    body {
+        background-color: yellow;
+    }
+    header {
+        background-color: #3e8e41;
+    }
+    main {
+        font-size: 16px;
+    }
+}
+
+/* 미디어 쿼리 : 화면 너비가 1200px 이하일때 */
+@media (max-width: 1200px) {
+    .wrap {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    body {
+        background-color: pink;
+    }
+    header {
+        background-color: #2e7031;
+    }
+    footer {
+        font-size: 16px;
+    }
+}
