@@ -1,0 +1,47 @@
+@charset "utf-8";
+  /* * { outline:1px solid red;} */
+  /* 공통 */
+  body, ul,li, p {margin:0; padding:0;}
+  ul,li {list-style-type: none;}
+  .container{ width:600px; margin:0 auto; }
+
+  /* 최상위 메뉴 */
+  .uppermost { background-color: black; }
+  .uppermost > .container-upm{ height:30px; line-height: 30px; text-align: right; background-color: black; }
+  .uppermost > .container-upm > p { margin-right:10px; font-size: 0.8rem; color: white; font-weight:bold; }
+  .uppermost > .container-upm > p > a { text-decoration: none; color: white; }
+  .uppermost > .container-upm > p > a:hover { text-decoration: underline; color: white; }
+  
+  /* 헤더 영역 */
+  header { }
+  header > .container-h { background-image: url("https://cdn.pixabay.com/photo/2020/01/26/20/14/computer-4795762__340.jpg"); background-size: 600px 150px; height:150px; background-color: gray; opacity: 0.8; }
+
+  /* 메뉴 영역 */
+  nav{}
+  nav > .container-n{ height:50px; background-color: black; }
+  nav > .container-n > ul{display:flex; align-items:center; height:50px; padding:0 50px;}
+  nav > .container-n > ul > li { flex:1; text-align: center; font-size:0.8rem; }
+  nav > .container-n > ul > li > a{ color:white; text-decoration: none; font-weight: bold; }
+  nav > .container-n > ul > li > a:hover{ text-decoration: underline; }
+  
+  /* 본문 영역 */
+  main{ }
+  main > .container > .content { display:flex; }
+  main > .container > .content > aside {flex:2; background-color:lightskyblue; }
+
+  /* 본문 영역 - 회원가입 */
+  main > .container > .content > section {flex:8; padding:20px; background-color: lightcyan; }
+  main > .container > .content > section  header > h3 { text-align:center; margin: 10px; letter-spacing: 0.5em; }
+  main > .container > .content > section  form  { width:250px; margin:0px auto; padding: 20px; background-color:white; }
+  main > .container > .content > section  form > ul { list-style-type: none; }
+  main > .container > .content > section  form > ul > li { font-size:0.8rem; margin:3px auto; }
+  main > .container > .content > section  form > ul > li:nth-child(odd) { font-weight: bold; }
+  main > .container > .content > section  form > ul > li > input{ width:250px; }
+  main > .container > .content > section  form > ul > li > input[type="radio"],
+  main > .container > .content > section  form > ul > li > input[type="checkbox"]{ width:initial; }
+  main > .container > .content > section  form > ul > li > input[type="button"]{
+    background-color: green; border:0px solid; padding:5px; font-weight: bold; color:white; letter-spacing: 0.3em; }    
+
+  /* 푸터 영역 */
+  footer{}
+  footer > .container-f{ display:flex; justify-content:center; align-items:center; height:70px; background-color: gray; color:white; font-weight: bold; font-size:0.8rem; }
