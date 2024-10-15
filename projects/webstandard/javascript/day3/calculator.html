@@ -1,0 +1,39 @@
+<!--
+  두수를 더하는 웹프로그램을 구현한시오.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+        width: 70px;
+    }
+  </style>
+</head>
+<body>
+    <!-- script 태그가 body 태그의 맨 아래에 위치해야한다.
+        1. HTML 콘텐츠 로드 지연 방지
+        2. DOM 요소 접근 가능성 
+        3. 비동기 및 지연 로딩 옵션
+    -->
+  <div><input type="text" id="op1"> + <input type="text" id="op2"> = <input type="text" id="result"></div>
+  <div><button>계산</button></div>
+  <script>
+    // 버튼 엘리먼트
+    const btnEle = document.querySelector('button');
+    const h_click = function(evt) {
+        console.log(evt);
+        const op1Ele = document.getElementById('op1');
+        const op2Ele = document.getElementById('op2');
+        console.log(op1Ele.value, op2Ele.value);
+        console.log(typeof(op1Ele.value));
+        result.value = parseInt(op1Ele.value) + parseFloat(op2Ele.value);
+    }   
+    btnEle.addEventListener('click', h_click, false);
+
+  </script>
+</body>
+</html>
