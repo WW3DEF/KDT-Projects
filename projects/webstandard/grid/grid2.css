@@ -1,0 +1,49 @@
+body {
+    padding: 5rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    grid-template-areas: 
+        'a a a'    
+        'b c c'    
+        'b d g'    
+        'e f g';
+    gap: 1rem;
+}
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container .image.image1 {
+    background-image: url("https://cdn.pixabay.com/photo/2024/09/13/16/13/clouds-9045346_1280.jpg");
+    grid-area: a;
+}
+.container .image.image2 {
+    background-image: url("https://cdn.pixabay.com/photo/2022/04/03/14/22/city-7109073_1280.jpg");
+    grid-area: b;
+}
+.container .image.image3 {
+    background-image: url("https://cdn.pixabay.com/photo/2023/06/14/23/12/sunset-8064078_1280.jpg");
+    grid-area: c;
+}
+.container .image.image4 {
+    background-image: url("https://cdn.pixabay.com/photo/2019/11/16/18/43/street-4630827_1280.jpg");
+    grid-area: d;
+}
+.container .image.image5 {
+    background-image: url("https://cdn.pixabay.com/photo/2016/05/10/10/41/russia-1383421_1280.jpg");
+    grid-area: e;
+}
+.container .image.image6 {
+    background-image: url("https://cdn.pixabay.com/photo/2018/08/19/16/31/moscow-3617070_1280.jpg");
+    grid-area: f;
+}
+.container .image.image7 {
+    background-image: url("https://cdn.pixabay.com/photo/2022/01/06/06/08/katun-river-6918707_1280.jpg");
+    grid-area: g;
+}

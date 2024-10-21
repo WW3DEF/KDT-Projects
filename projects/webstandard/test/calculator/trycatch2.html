@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const expression = '10*/2';
+        try {
+            // 오류가 예상되는 코드
+            const arr = [1,2,3]
+            const value = arr[3];
+            if(value == undefined) {
+                throw new Error('요소접근불가!');
+            }
+        } catch(e) {
+            // try절에 오류가 발생됐을때 실행되는 코드
+            console.log(e);
+            console.dir(e);
+            console.log(e.message);
+            console.log('오류발생');
+        } finally {
+            // try절에 오류발생 유무에 상관없이 무조건 실행
+            console.log('try절에 오류발생 유무에 상관없이 무조건 실행');
+        }
+        console.log('hi');
+    </script>
+</body>
+</html>

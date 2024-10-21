@@ -1,0 +1,104 @@
+@charset 'utf-8';
+
+* {
+    /* outline: 1px solid red; */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator .calcwrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    height: 70%;
+    background: rgba(199, 197, 197, 0.105);
+    border-radius: 3px;
+}
+
+.calculator .calcwrap .calcresult {
+    display: flex;
+}
+.calculator .calcwrap .calcresult,
+.calculator .calcwrap .calcbtnwrap {
+    margin: 10px;
+    border-radius: 3px;
+}
+
+.calculator .calcresult .resultfield{
+    width: 100%;
+    height: 40px;
+    text-align: right;
+}
+
+
+.calculator .calcwrap .calcbtnwrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-template-areas: 
+    'a b c d'
+    'e f g h'
+    'i j k l'
+    'm o p q';
+}
+.calculator .calcwrap .calcbtnwrap .btn {
+    height: 60px;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn0{
+    grid-area: m;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn1{
+    grid-area: i;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn2{
+    grid-area: j;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn3{
+    grid-area: k;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn4{
+    grid-area: e;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn5{
+    grid-area: f;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn6{
+    grid-area: g;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn7{
+    grid-area: a;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn8{
+    grid-area: b;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btn9{
+    grid-area: c;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btnPlus{
+    grid-area: p;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btnClear{
+    grid-area: o;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btnAssign{
+    grid-area: q;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btnDivide{
+    grid-area: d;
+}
+.calculator .calcwrap .calcbtnwrap .btn.btnMultiply{
+    grid-area: h;
+}
