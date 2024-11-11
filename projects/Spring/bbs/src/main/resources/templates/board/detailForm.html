@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판 상세</title>
+  <script defer src="/js/board/detailForm.js"></script>
+</head>
+<body>
+  <h3>게시판 상세</h3>
+  <form action="" method="post">
+    <div><label for="">게시판ID</label><input type="text" name="boardId" id="boardId" readonly th:value="${detailForm.boardId}"></div>
+    <div><label for="">제목</label><input type="text" name="boardTitle" readonly th:value="${detailForm.boardTitle}"></div>
+    <div><label for="">내용</label><input type="text" name="boardContent" readonly th:value="${detailForm.boardContent}"></div>
+    <div><label for="">작성자</label><input type="text" name="boardWriter" readonly th:value="${detailForm.boardWriter}"></div>
+    <div><label for="">작성일</label><input type="text" name="boardDate" readonly th:value="${detailForm.boardDate}"></div>
+    <div><label for="">수정일</label><span th:text="${detailForm.boardUpdate}">123</span></div>
+  </form>
+  <div>
+    <button id="btnUpdate">수정</button>
+    <button id="btnDelete">삭제</button>
+    <button id="btnFindAll">목록</button>
+  </div>
+</body>
+</html>

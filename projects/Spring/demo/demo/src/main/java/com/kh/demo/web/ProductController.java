@@ -2,10 +2,7 @@ package com.kh.demo.web;
 
 import com.kh.demo.domain.entity.Product;
 import com.kh.demo.domain.product.svc.ProductSVC;
-import com.kh.demo.web.form.product.AllForm;
-import com.kh.demo.web.form.product.DetailForm;
-import com.kh.demo.web.form.product.SaveForm;
-import com.kh.demo.web.form.product.UpdateForm;
+import com.kh.demo.web.form.product.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +31,7 @@ public class ProductController {
   //등록양식
   @GetMapping("/add")
   public String addForm(Model model){
-    model.addAttribute("saveForm",new SaveForm());
+    model.addAttribute("saveForm",new SaveFormOld());
     return "/product/add";//상품등록화면
   }
   //등록처리
@@ -56,15 +53,15 @@ public class ProductController {
 
     // 2. 코드기반 검증 : 필드 및 글로벌 오류(필드 2개이상)
     // 2.1 필드 오류 : 상품수량 100 초과 불가
-    if (saveForm.getQuantity() > 1000) {
-//      bindingResult.rejectValue("quantity",null, "상품수량 100 초과 불가");
-      bindingResult.rejectValue("quantity","product", new Object[]{100}, null); //product.saveForm.quantity
+    if (saveForm.getQuantity() > 100) {
+//      bindingResult.rejectValue("quantity",null,"상품수량 100 초과 불가");
+      bindingResult.rejectValue("quantity","product",new Object[]{100},null);  //product.saveForm.quantity,product.quantity,product
     }
 
     // 2.2 글로벌 오류 : 총액(상품수량 * 단가) 1000 만원 초과 불과
     if (saveForm.getPrice() * saveForm.getQuantity() > 10_000_000L) {
-//      bindingResult.reject(null, "총액( 상품수량 * 단가 ) 1000만원 초과 불과");
-      bindingResult.reject("totalPrice", new Object[]{1000}, null); // totalPrice.saveForm, totalPrice.
+//      bindingResult.reject(null,"총액(상품수량 * 단가) 1000 만원 초과 불과");
+      bindingResult.reject("totalPrice",new Object[]{1000},null); //totalPrice.saveForm,totalPrice
     }
 
     if (bindingResult.hasErrors()) {

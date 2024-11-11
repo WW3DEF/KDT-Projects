@@ -27,14 +27,17 @@ public class ApiResponse<T> {
   private static class Header{
     private String rtcd;      //응답코드
     private String rtmsg;     //응답메시지
+//    private Map<String, String> details; // 응답오류 상세
+
 
     Header(String rtcd, String rtmsg) {
       this.rtcd = rtcd;
       this.rtmsg = rtmsg;
+//      this.details = details;
     }
   }
 
-  public static <T> ApiResponse<T> createApiResponse(String rtcd, String rtmsg, T body){
+  public static <T> ApiResponse<T> createApiResponse(ApiResponseCode responseCode, T body){
     int totalCnt = 0;
 
     if(body != null) {
@@ -48,6 +51,6 @@ public class ApiResponse<T> {
         totalCnt = 1;
       }
     }
-    return new ApiResponse<>(new Header(rtcd,rtmsg), body, totalCnt);
+    return new ApiResponse<>(new Header(responseCode.getRtcd(), responseCode.getRtmsg()), body, totalCnt);
   }
 }

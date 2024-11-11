@@ -46,7 +46,7 @@ public class ProductDAOImplTest {
     Long productId = 2L;
     Optional<Product> product = productDAO.findById(productId);
     // 조회된 상품이 없으면 예외 발생 있으면 변수에 저장
-    Product findedProduct = product.orElseThrow();  
+    Product findedProduct = product.orElseThrow();
 //    log.info("findedProduct={}",findedProduct);
 
     Assertions.assertThat(findedProduct.getPname()).isEqualTo("모니터");

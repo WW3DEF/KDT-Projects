@@ -1,0 +1,20 @@
+@charset 'utf-8';
+
+tbody > tr{
+    border-top: 3px;
+    border-bottom: 3px;
+    border-style: solid;
+}
+
+tbody > tr:hover {
+    background-color: rgba(128, 128, 128, 0.304);
+}
+
+#btnDels {
+    background-color: darkblue;
+    color: gray;
+}
+
+#btnAdd {
+    background-color: brown;
+}
