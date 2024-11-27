@@ -23,6 +23,10 @@ public interface ReplySVC {
   Optional<Reply> findById(Long replyId);
 
   //  목록
-  List<Reply> listAll();
+  List<Reply> listAll(Long boardId);
 
+  List<Reply> findAll(int reqPage,int reqRec, Long boardId);
+
+  //총 레코드 건수
+  int totalRec();
 }

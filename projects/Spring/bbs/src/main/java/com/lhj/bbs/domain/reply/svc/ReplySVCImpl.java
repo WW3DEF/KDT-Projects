@@ -42,7 +42,17 @@ public class ReplySVCImpl implements ReplySVC{
   }
 
   @Override
-  public List<Reply> listAll() {
-    return replyDAO.listAll();
+  public List<Reply> listAll(Long boardId) {
+    return replyDAO.listAll(boardId);
+  }
+
+  @Override
+  public List<Reply> findAll(int reqPage, int reqRec, Long boardId) {
+    return replyDAO.findAll(reqPage,reqRec, boardId);
+  }
+
+  @Override
+  public int totalRec() {
+    return replyDAO.totalRec();
   }
 }

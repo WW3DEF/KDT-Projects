@@ -5,22 +5,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게시판 상세</title>
-  <script defer src="/js/board/detailForm.js"></script>
+  <script type="module" src="/js/common.js"></script>
+  <script type="module" defer src="/js/board/detailForm.js"></script>
 </head>
 <body>
+  <form action="" method="">
   <h3>게시판 상세</h3>
-  <form action="" method="post">
-    <div><label for="">게시판ID</label><input type="text" name="boardId" id="boardId" readonly th:value="${detailForm.boardId}"></div>
-    <div><label for="">제목</label><input type="text" name="boardTitle" readonly th:value="${detailForm.boardTitle}"></div>
-    <div><label for="">내용</label><input type="text" name="boardContent" readonly th:value="${detailForm.boardContent}"></div>
-    <div><label for="">작성자</label><input type="text" name="boardWriter" readonly th:value="${detailForm.boardWriter}"></div>
-    <div><label for="">작성일</label><input type="text" name="boardDate" readonly th:value="${detailForm.boardDate}"></div>
-    <div><label for="">수정일</label><span th:text="${detailForm.boardUpdate}">123</span></div>
+  <div><label for="">게시판ID</label><input type="text" name="boardId" id="boardId" readonly th:value="${detailForm.boardId}"></div>
+  <div><label for="">제목</label><input type="text" name="boardTitle" readonly th:value="${detailForm.boardTitle}"></div>
+  <div><label for="">내용</label><input type="text" name="boardContent" readonly th:value="${detailForm.boardContent}"></div>
+  <div><label for="">작성자</label><input type="text" name="boardWriter" readonly th:value="${detailForm.boardWriter}"></div>
+  <div><label for="">작성일</label><input type="text" name="boardDate" readonly th:value="${detailForm.boardDate}"></div>
+  <div><label for="">수정일</label><span th:text="${detailForm.boardUpdate}">123</span></div>
+  <div>
+    <div th:if="${!session.isEmpty()}">
+      <th:block th:if="${detailForm.userId == session.loginSuccUser.userId}">
+        <button id="btnUpdate" type="button">수정</button>
+        <button id="btnDelete" type="button">삭제</button>
+      </th:block>
+    </div>
+    <button id="btnFindAll" type="button">목록</button>
+  </div>
   </form>
   <div>
-    <button id="btnUpdate">수정</button>
-    <button id="btnDelete">삭제</button>
-    <button id="btnFindAll">목록</button>
+    <h3>댓글</h3>
+    <div class="" style="border: solid; width: 30%; border-radius: 5px; border-color: antiquewhite;">
+        <!-- <div class="" th:if="${!session.isEmpty()}">
+        <span th:text="${session.loginSuccUser.nickname}">이름</span><span>님</span>
+        <textarea name="replyContent" id="replyContent" cols="40" rows="5" style="resize: none;" maxlength="200"></textarea>
+        <button type="submit">등록</button>
+      </div> -->
+      
+        <div id="replyArea" >
+          <th:block th:if="${!session.isEmpty()}" id="replyWriteArea">
+            <form id="frm" th:data-boardid="${detailForm.boardId}" th:data-userid="${session.loginSuccUser.userId}">
+              
+            </form>
+          </th:block>
+          <!-- <span th:text="${reply.replyWriter}">이름</span><span>님</span>
+          <span th:text="${reply.replyContent}">내용</span>
+          <span th:text="${reply.createDate}">작성일</span>
+          <button id="modifyReply" type="button">수정</button>
+          <button id="delReply" type="button">삭제</button> -->
+      </div>
+    
   </div>
 </body>
 </html>

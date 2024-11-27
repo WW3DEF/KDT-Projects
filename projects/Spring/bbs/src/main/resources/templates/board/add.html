@@ -34,7 +34,7 @@
       </div>
       <div>
         <label for="boardWriter">작성자</label>
-        <input type="text" name="boardWriter" id="boardWriter" th:value="*{boardWriter}">
+        <span th:text="${session.loginSuccUser.nickname}"></span>
         <span class="err" id="errWriter"></span>
         <!-- <span class="err" th:errors="*{boardWriter}"></span> -->
       </div>
@@ -47,11 +47,9 @@
       e.preventDefault(); 
       errTitle.textContent = '';
       errContent.textContent = '';
-      errWriter.textContent = '';
   
       const titleVal = boardTitle.value.trim();
       const contentVal = boardContent.value.trim();
-      const writerVal = boardWriter.value.trim();
   
       // 제목
       if(titleVal.length == 0){
@@ -71,16 +69,6 @@
       }else if(getBytesSize(contentVal) > 900) {
         boardContent.focus();
         errContent.textContent = '내용이 300자 이상 초과할 수 없습니다.';
-        return;
-      }
-      // 글쓴이
-      if(writerVal.length == 0){
-        boardWriter.focus();
-        errWriter.textContent = '이름은 필수로 입력해야합니다.';
-        return;
-      }else if(getBytesSize(writerVal) > 30) {
-        boardWriter.focus();
-        errWriter.textContent = '이름이 10자 이상 초과할 수 없습니다.';
         return;
       }
       frm.submit();

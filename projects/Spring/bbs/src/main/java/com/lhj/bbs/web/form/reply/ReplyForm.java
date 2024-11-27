@@ -1,11 +1,13 @@
-package com.lhj.bbs.domain.entity;
+package com.lhj.bbs.web.form.reply;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 
-@Data
-public class Reply {
+@Getter
+@Setter
+public class ReplyForm {
 
   private Long replyId; // NUMBER(10,0)
 

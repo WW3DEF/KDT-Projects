@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -36,6 +37,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 //      데이터를 추출하고 reply 객체에 설정
       reply.setReplyId(rs.getLong("reply_id"));
       reply.setBoardId(rs.getLong("board_id"));
+      reply.setUserId(rs.getLong("user_id"));
       reply.setReplyWriter(rs.getString("reply_writer"));
       reply.setReplyContent(rs.getString("reply_content"));
       reply.setCreateDate(rs.getTimestamp("create_date"));
@@ -49,8 +51,8 @@ public class ReplyDAOImpl implements ReplyDAO{
   @Override
   public Long add(Reply reply) {
     StringBuffer sql = new StringBuffer();
-    sql.append("insert into replybbs(reply_id, board_id, reply_writer, reply_content, create_date) ");
-    sql.append("values (reply_id_seq.nextval, :boardId, :replyWriter, :replyContent, sysdate) ");
+    sql.append("insert into reply(reply_id, board_id, user_id, reply_writer, reply_content, create_date) ");
+    sql.append("values (reply_id_seq.nextval, :boardId, :userId, :replyWriter, :replyContent, sysdate) ");
 
     SqlParameterSource sqlParameterSource = new BeanPropertySqlParameterSource(reply);
 
@@ -67,7 +69,7 @@ public class ReplyDAOImpl implements ReplyDAO{
   public int updateById(Long replyId, Reply reply) {
 //    StringBuffer 객체에 sql 쿼리문 추가
     StringBuffer sql = new StringBuffer();
-    sql.append("update replybbs ");
+    sql.append("update reply ");
     sql.append("set reply_writer = :replyWriter, reply_content = :replyContent, update_date = sysdate ");
     sql.append("where reply_id = :replyId ");
 
@@ -77,7 +79,6 @@ public class ReplyDAOImpl implements ReplyDAO{
         .addValue("replyContent", reply.getReplyContent())
         .addValue("replyId", replyId);
 
-
     int updateRow = template.update(sql.toString(), sqlParamSrc);
 
     return updateRow;
@@ -86,7 +87,7 @@ public class ReplyDAOImpl implements ReplyDAO{
   @Override
   public int deleteById(Long replyId) {
     StringBuffer sql = new StringBuffer();
-    sql.append("delete from replybbs ");
+    sql.append("delete from reply ");
     sql.append("where reply_id = :replyId ");
 
     Map<String, Long> mapRepId = Map.of("replyId", replyId);
@@ -98,7 +99,7 @@ public class ReplyDAOImpl implements ReplyDAO{
   @Override
   public int deleteByIds(List<Long> replyIds) {
     StringBuffer sql = new StringBuffer();
-    sql.append("delete from replybbs ");
+    sql.append("delete from reply ");
     sql.append("where reply_id in (:replyIds) ");
 
     Map<String, List<Long>> mapReplyIds = Map.of("replyIds", replyIds);
@@ -110,8 +111,8 @@ public class ReplyDAOImpl implements ReplyDAO{
   @Override
   public List<Reply> listAll() {
     StringBuffer sql = new StringBuffer();
-    sql.append("select reply_id, board_id, reply_writer, reply_content, create_date, update_date ");
-    sql.append("from replybbs ");
+    sql.append("select reply_id, board_id, user_id, reply_writer, reply_content, create_date, update_date ");
+    sql.append("from reply ");
 
     List<Reply> replyList = template.query(sql.toString(), replyRowMapper());
 
@@ -119,10 +120,38 @@ public class ReplyDAOImpl implements ReplyDAO{
   }
 
   @Override
+  public List<Reply> listAll(Long boardId) {
+    StringBuffer sql = new StringBuffer();
+    sql.append("select reply_id, board_id, user_id, reply_writer, reply_content, create_date, update_date ");
+    sql.append("from reply ");
+    sql.append("where board_id = :boardId ");
+
+    SqlParameterSource param = new MapSqlParameterSource("boardId",boardId);
+
+    List<Reply> replyList = template.query(sql.toString(), param, replyRowMapper());
+
+    return replyList;
+  }
+
+  @Override
+  public List<Reply> findAll(int reqPage, int reqRec, Long boardId) {
+    StringBuffer sql = new StringBuffer();
+    sql.append("select reply_id, board_id, user_id, reply_writer, reply_content, create_date, update_date ");
+    sql.append("  from reply ");
+    sql.append(" where board_id = :boardId ");
+    sql.append("offset (:reqPage-1) * :reqRec rows fetch first :reqRec rows only ");
+
+    Map<String, Object> param = Map.of("boardId", boardId,"reqPage",reqPage, "reqRec",reqRec);
+    List<Reply> list = template.query(sql.toString(), param, replyRowMapper());
+
+    return list;
+  }
+
+  @Override
   public Optional<Reply> findById(Long replyId) {
     StringBuffer sql = new StringBuffer();
-    sql.append("select reply_id, board_id, reply_writer, reply_content, create_date, update_date ");
-    sql.append("from replybbs ");
+    sql.append("select reply_id, board_id, user_id, reply_writer, reply_content, create_date, update_date ");
+    sql.append("from reply ");
     sql.append("where reply_id = :replyId ");
 
     SqlParameterSource sqlParamSrc = new MapSqlParameterSource()
@@ -142,5 +171,11 @@ public class ReplyDAOImpl implements ReplyDAO{
     }
 
     return Optional.of(reply);
+  }
+
+  @Override
+  public int totalRec() {
+    String sql = "select count(*) from reply ";
+    return template.queryForObject(sql, Map.of(), Integer.class);
   }
 }

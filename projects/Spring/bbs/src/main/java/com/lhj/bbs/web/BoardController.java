@@ -2,10 +2,14 @@ package com.lhj.bbs.web;
 
 import com.lhj.bbs.domain.entity.Board;
 import com.lhj.bbs.domain.board.svc.BoardSVC;
+import com.lhj.bbs.domain.entity.Reply;
+import com.lhj.bbs.domain.reply.svc.ReplySVC;
 import com.lhj.bbs.web.form.board.AllForm;
 import com.lhj.bbs.web.form.board.DetailForm;
 import com.lhj.bbs.web.form.board.SaveForm;
 import com.lhj.bbs.web.form.board.UpdateForm;
+import com.lhj.bbs.web.form.login.LoginUser;
+import com.lhj.bbs.web.form.reply.ReplyForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +30,7 @@ import java.util.Optional;
 public class BoardController {
 
   private final BoardSVC boardSVC;
+  private final ReplySVC replySVC;
 
 
   @GetMapping("/add")
@@ -40,17 +45,22 @@ public class BoardController {
         @Valid
         @ModelAttribute SaveForm saveForm,
         BindingResult bindingResult,
+        @SessionAttribute("loginSuccUser")
+        LoginUser loginUser,
         RedirectAttributes redirectAttributes)
   {
-    Board board = new Board();
-    board.setBoardTitle(saveForm.getBoardTitle());
-    board.setBoardContent(saveForm.getBoardContent());
-    board.setBoardWriter(saveForm.getBoardWriter());
+      if(!loginUser.getNickname().isEmpty()) {
 
-    Long saveId = boardSVC.save(board);
+        Board board = new Board();
+        board.setUserId(loginUser.getUserId());
+        board.setBoardTitle(saveForm.getBoardTitle());
+        board.setBoardContent(saveForm.getBoardContent());
+        board.setBoardWriter(loginUser.getNickname());
 
-    redirectAttributes.addAttribute("id", saveId);
+        Long saveId = boardSVC.save(board);
 
+        redirectAttributes.addAttribute("id", saveId);
+      }
     return "redirect:/freeBoard/{id}";
   }
 
@@ -60,8 +70,10 @@ public class BoardController {
     List<AllForm> all = new ArrayList<>();
 
     for (Board board : list) {
+
       AllForm allForm = new AllForm();
       allForm.setBoardId(board.getBoardId());
+      allForm.setUserId(board.getUserId());
       allForm.setBoardTitle(board.getBoardTitle());
       allForm.setBoardWriter(board.getBoardWriter());
       allForm.setBoardDate(board.getBoardDate());
@@ -83,20 +95,62 @@ public class BoardController {
     Board board = findId.orElseThrow();
 
     DetailForm detailForm = new DetailForm();
+
     detailForm.setBoardId(board.getBoardId());
+    detailForm.setUserId(board.getUserId());
     detailForm.setBoardTitle(board.getBoardTitle());
     detailForm.setBoardContent(board.getBoardContent());
     detailForm.setBoardWriter(board.getBoardWriter());
     detailForm.setBoardDate(board.getBoardDate());
     detailForm.setBoardUpdate(board.getBoardUpdate());
 
+    List<Reply> replyList = replySVC.listAll(boardId);
+    List<ReplyForm> listAll = new ArrayList<>();
+    for (Reply reply  : replyList) {
+      ReplyForm replyForm = new ReplyForm();
+
+      replyForm.setReplyId(reply.getReplyId());
+      replyForm.setBoardId(reply.getBoardId());
+      replyForm.setUserId(reply.getUserId());
+      replyForm.setReplyWriter(reply.getReplyWriter());
+      replyForm.setReplyContent(reply.getReplyContent());
+      replyForm.setCreateDate(reply.getCreateDate());
+      replyForm.setUpdateDate(reply.getUpdateDate());
+
+      listAll.add(replyForm);
+
+    }
+
+    model.addAttribute("replyForm", listAll);
     model.addAttribute("detailForm", detailForm);
 
     return "/board/detailForm";
   }
 
+  @PostMapping("/{id}/reply")
+  public String addReply(
+      @PathVariable("id") Long boardID,
+      @ModelAttribute ReplyForm replyForm,
+      @SessionAttribute("loginSuccUser")
+      LoginUser loginUser
+  ) {
+      Reply reply = new Reply();
+
+      reply.setUserId(loginUser.getUserId());
+      reply.setBoardId(boardID);
+      reply.setReplyWriter(loginUser.getNickname());
+      reply.setReplyContent(replyForm.getReplyContent());
+
+      replySVC.add(reply);
+      log.info("reply={}", reply);
+
+      return "redirect:/freeBoard/{id}";
+  }
+
   @PostMapping("/del")
-  public String deleteByIds(@RequestParam("boardIds") List<Long> boardIds){
+  public String deleteByIds(
+      @RequestParam("boardIds") List<Long> boardIds
+   ){
 
     int rows = boardSVC.deleteByIds(boardIds);
 
@@ -105,6 +159,15 @@ public class BoardController {
 
   @GetMapping("/{id}/del")
   public String deleteById(@PathVariable("id") Long boardId){
+    List<Reply> all = replySVC.listAll(boardId);
+    List<Long> clearRepList = new ArrayList<>();
+    for (Reply reply : all) {
+      Long longRepId = reply.getReplyId();
+
+      clearRepList.add(longRepId);
+    }
+    log.info("clearRepList={}", clearRepList);
+    replySVC.deleteByIds(clearRepList);
 
     int row = boardSVC.deleteById(boardId);
 

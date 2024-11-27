@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class ReqUpdate {
 
-  private String replyTitle;
+  private String replyWriter;
   private String replyContent;
 
 }

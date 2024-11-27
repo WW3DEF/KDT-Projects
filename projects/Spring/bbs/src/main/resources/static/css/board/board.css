@@ -1,9 +1,15 @@
 @charset 'utf-8';
 
 tbody > tr{
+    border-bottom: 3px;
+    border-style: solid;
+}
+
+thead > tr{
     border-top: 3px;
     border-bottom: 3px;
     border-style: solid;
+    background: #a15858be;
 }
 
 tbody > tr:hover {

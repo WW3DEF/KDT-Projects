@@ -23,6 +23,19 @@ public interface ReplyDAO {
   Optional<Reply> findById(Long replyId);
 
 //  목록
+  List<Reply> listAll(Long boardId);
+
   List<Reply> listAll();
+
+  /**
+   * 요청페이지 레코드 가져오기
+   * @param reqPage 요청페이지
+   * @param reqRec  한페이지에 보여줄 레코드 수
+   * @return
+   */
+  List<Reply> findAll(int reqPage,int reqRec, Long boardId);
+
+  //총 레코드 건수
+  int totalRec();
 
 }

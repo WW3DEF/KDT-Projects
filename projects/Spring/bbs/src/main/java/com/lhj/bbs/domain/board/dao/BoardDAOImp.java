@@ -60,8 +60,8 @@ public class BoardDAOImp implements BoardDAO{
   public Long save(Board board) {
 //    sql 쿼리를 StringBuffer에 담기
     StringBuffer sql = new StringBuffer();
-    sql.append("insert into Board( board_id, board_title, board_content, board_writer, board_date ) ");
-    sql.append("values( board_id_seq.nextval, :boardTitle , :boardContent , :boardWriter , sysdate ) ");
+    sql.append("insert into Board( board_id, user_id, board_title, board_content, board_writer, board_date ) ");
+    sql.append("values( board_id_seq.nextval, :userId, :boardTitle, :boardContent , :boardWriter , sysdate ) ");
 
     SqlParameterSource sqlParam = new BeanPropertySqlParameterSource(board);
 
@@ -81,7 +81,7 @@ public class BoardDAOImp implements BoardDAO{
   public Optional<Board> findById(Long boardId) {
 //    StringBuffer 객체에 sql 쿼리문 추가
     StringBuffer sql = new StringBuffer();
-    sql.append("select board_id, board_title, board_content, board_writer, board_date, board_update ");
+    sql.append("select board_id, user_id, board_title, board_content, board_writer, board_date, board_update ");
     sql.append("from board ");
     sql.append("where board_id = :boardId ");
 
@@ -108,7 +108,7 @@ public class BoardDAOImp implements BoardDAO{
   public List<Board> findAll() {
 //    1. SQL문 작성
     StringBuffer sql = new StringBuffer();
-    sql.append("select board_id, board_title, board_content, board_writer, board_date, board_update ");
+    sql.append("select board_id, user_id,board_title, board_content, board_writer, board_date, board_update ");
     sql.append("from board ");
 
 //

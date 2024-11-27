@@ -1,16 +1,77 @@
-// 테이블 생성
-create table boards (
-     board_id number(10,0) primary key,
-     board_title varchar2(50) not null,
-     board_content clob not null,
-     board_writer varchar2(30) not null,
-     board_date timestamp,
-     board_update timestamp default null
- );
+-- 테이블 삭제
+drop table reply;
+drop table board;
+drop table users;
 
-// 시퀀스 생성
+-- 시퀀스 삭제
+drop sequence board_id_seq;
+drop sequence user_id_seq;
+drop sequence reply_id_seq;
+
+-- 게시판 테이블
+create table board(
+    board_id number(10),
+    user_id number(10),
+    board_title varchar2(200),
+    board_content clob,
+    board_writer varchar2(30),
+    board_date timestamp default systimestamp,
+    board_update timestamp
+);
+
+-- 댓글 테이블
+create table reply(
+    reply_id number(10),
+    board_id number(10),
+    user_id number(10),
+    reply_writer varchar2(60),
+    reply_content clob,
+    create_date timestamp default systimestamp,
+    update_date timestamp
+);
+
+-- 유저 테이블
+create table users(
+    user_id number(10),
+    email varchar2(50),
+    passwd varchar2(50),
+    nickname varchar2(30)
+);
+
+-- 시퀀스 생성
 create sequence board_id_seq
 start with 1
-increment by 1
-;
+increment by 1;
 
+create sequence user_id_seq
+start with 1
+increment by 1;
+
+create sequence reply_id_seq
+start with 1
+increment by 1;
+
+-- 기본키
+alter table board add constraint board_board_id_pk primary key(board_id);
+alter table users add constraint users_user_id_pk primary key (user_id);
+alter table reply add constraint reply_reply_id_pk primary key (reply_id);
+
+-- 외래키
+alter table board add constraint board_user_id_fk foreign key(user_id) references users(user_id);
+alter table reply add constraint reply_user_id_fk foreign key(user_id) references users(user_id);
+alter table reply add constraint reply_board_id_fk foreign key(board_id) references board(board_id);
+
+-- 제약조건
+--테이블
+alter table board modify board_title constraint board_title_nn not null;
+alter table board modify board_content constraint board_content_nn not null;
+alter table board modify board_writer constraint board_writer_nn not null;
+
+--댓글
+alter table reply modify reply_writer constraint reply_writer_nn not null;
+alter table reply modify reply_content constraint reply_content_nn not null;
+
+--유저
+alter table users modify email constraint users_email_nn_unique not null unique;
+alter table users modify passwd constraint users_passwd_nn not null;
+alter table users modify nickname constraint users_nickname_nn_unique not null unique;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="../../static/css/common.css">
+</head>
+<body>
+  <form action="" method="post">
+    <div>
+      <label for="">이메일</label>
+      <input type="text" name="email"><span></span>
+    </div>
+    <div>
+      <label for="">비밀번호</label>
+      <input type="password" name="passwd">
+      <span ></span>
+    </div>
+    <div>
+      <label for="">비밀번호 확인</label>
+      <input type="password">
+      <span ></span>
+    </div>
+    <div>
+      <label for="">닉네임</label>
+      <input type="text" name="nickname">
+      <span ></span>
+    </div>
+    <div>
+      <button>가입</button>
+      <a href="/login"><button type="button">취소</button></a>
+    </div>
+  </form>
+</body>
+</html>

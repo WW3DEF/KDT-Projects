@@ -24,4 +24,5 @@ public interface BoardDAO {
   //여러건 삭제
   int deleteByIds(List<Long> boardIds);
 
+
 }
