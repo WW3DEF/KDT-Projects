@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입</title>
-  <link rel="stylesheet" href="../../static/css/common.css">
+  <link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
-  <form action="" method="post">
+  <form action="/signup" method="post" th:object="${signupForm}">
     <div>
       <label for="">이메일</label>
       <input type="text" name="email"><span></span>
     </div>
     <div>
       <label for="">비밀번호</label>
-      <input type="password" name="passwd">
+      <input type="password" name="passwd" >
       <span ></span>
     </div>
     <div>
